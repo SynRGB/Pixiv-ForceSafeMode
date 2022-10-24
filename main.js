@@ -3,7 +3,7 @@
 // @name:zh-CN          Pixiv-一键强制和谐
 // @name:ja             Pixiv-ワンタッチセキュリティモード
 // @namespace           https://github.com/TitanRGB
-// @version             1.0
+// @version             1.1
 // @description         While writing the last Pixiv user script, I realized that the official (Safe/R-18) filter didn't cover all the scenes. So I made this script to filter all bad information with one click.
 // @description:zh-CN   开发上一个 Pixiv 插件时，意识到官方的 (全年龄/R-18) 过滤器并不能覆盖所有场景，容易使我的身体吃不消。因此需要更强大的强制过滤插件来一键过滤所有不良信息。
 // @description:ja      前回のPixivユーザースクリプトを作成している最中、公式の（セーフ/ R-18）フィルターがすべてのシーンをカバーしていないことに気づきました。 したがって、1つのクリックですべての不適切な情報をフィルタリングするより強力な強制フィルタリングスクリプトが必要です。
@@ -34,6 +34,21 @@ if (GM_getValue('pixiv-quick-safemode') === undefined) {
 let last_run_time = new Date().getTime();
 
 let delete_r18 = function () {
+    let new_div = document.createElement('div');
+    new_div.setAttribute('id', 'Pixiv-QuickSafeMode-Deleted');
+    new_div.setAttribute('style', `
+        width: 136px;
+        height: 136px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 50px;
+        color: #999;
+    `);
+    new_div.innerText = '🔞';
     if (GM_getValue('pixiv-quick-safemode', false)) {
         let div = document.querySelectorAll('div[type="illust"]');
         for (let i = 0; i < div.length; i++) {
@@ -41,38 +56,15 @@ let delete_r18 = function () {
             for (let j = 0; j < divs.length; j++) {
                 // if contains 'R-18' or 'R-18G' in a div
                 if (divs[j].innerText.includes('R-18') || divs[j].innerText.includes('R-18G')) {
-                    if (div[i].offsetWidth === 136) {
-                        let new_div = document.createElement('div');
-                        new_div.setAttribute('id', 'Pixiv-QuickSafeMode-Deleted');
-                        new_div.setAttribute('style', `
-                            width: 136px;
-                            height: 136px;
-                            background-color: #fff;
-                            border: 1px solid #ddd;
-                            border-radius: 4px;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            font-size: 12px;
-                            color: #999;
-                        `);
-                        new_div.innerText = 'R-18';
-                        div[i] = div[i].parentNode.replaceChild(new_div, div[i]);
-                        break;
+                    let parent3 = div[i].parentNode.parentNode.parentNode;
+                    let parent2 = div[i].parentNode.parentNode;
+                    if ((parent2.querySelectorAll('div[type="illust"]').length === 1 && parent2.tagName === 'LI') || parent3.tagName === 'UL') {
+                        parent2.remove();
+                        // console.log('2');
                     } else {
-                        let parent3 = div[i].parentNode.parentNode.parentNode;
-                        let parent2 = div[i].parentNode.parentNode;
-                        let parent1 = div[i].parentNode;
-                        if (parent3.querySelectorAll('div[type="illust"]').length === 1) {
-                            parent3.remove();
-                        } else if (parent2.querySelectorAll('div[type="illust"]').length === 1) {
-                            parent2.remove();
-                        } else if (parent1.querySelectorAll('div[type="illust"]').length === 1) {
-                            parent1.remove();
-                        } else {
-                            div[i].remove();
-                        }
-                        break;
+                        new_div.style.width = new_div.style.height = div[i].offsetWidth + 'px';
+                        div[i].parentNode.replaceChild(new_div, div[i]);
+                        // console.log('1');
                     }
                 }
             }
@@ -83,21 +75,8 @@ let delete_r18 = function () {
             for (let j = 0; j < divs.length; j++) {
                 // if contains 'R-18' or 'R-18G' in a div
                 if (divs[j].innerText.includes('R-18') || divs[j].innerText.includes('R-18G')) {
-                    try {
-                        let parent3 = li[i].parentNode.parentNode.parentNode;
-                        let parent2 = li[i].parentNode.parentNode;
-                        let parent1 = li[i].parentNode;
-                        if (parent3.querySelectorAll('div[type="illust"]').length === 1) {
-                            parent3.remove();
-                        } else if (parent2.querySelectorAll('div[type="illust"]').length === 1) {
-                            parent2.remove();
-                        } else if (parent1.querySelectorAll('div[type="illust"]').length === 1) {
-                            parent1.remove();
-                        } else {
-                            li[i].remove();
-                        }
-                    } catch (e) {
-
+                    if (li[i].parentNode.tagName === 'UL') {
+                        li[i].remove();
                     }
                 }
             }
@@ -208,14 +187,18 @@ let main = function () {
 let MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
 let observer = new MutationObserver(function (mutations) {
     mutations.forEach(function () {
-        if (new Date().getTime() - last_run_time > 10) {
+        if (new Date().getTime() - last_run_time > 20) {
             setTimeout(function () {
+                // 主函数-添加交互按钮
                 if (document.querySelectorAll('div[class="Pixiv-QuickSafeMode"]').length === 0) {
                     main();
-                } else {
                     delete_r18();
                 }
-            }, 15);
+                // 删除R-18
+                else {
+                    delete_r18();
+                }
+            }, 100);
         }
     });
 });
