@@ -16,7 +16,7 @@ While writing the last Pixiv user script, I realized that the official (Safe/R-1
 ### PS
 
 The button is on the top bar, you should be able to see it.
-<!--
+<!-- Greasy Fork 更新日志
 ## Pixiv-ForceSafeMode `v1.4`
 - Fixed a functional bug
 - 修复了功能缺陷
