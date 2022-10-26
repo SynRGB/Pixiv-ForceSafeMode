@@ -3,7 +3,7 @@
 // @name:zh-CN          Pixiv-一键强制和谐
 // @name:ja             Pixiv-ワンタッチセキュリティモード
 // @namespace           https://github.com/TitanRGB
-// @version             1.3
+// @version             1.4
 // @description         While writing the last Pixiv user script, I realized that the official (Safe/R-18) filter didn't cover all the scenes. So I made this script to filter all bad information with one click.
 // @description:zh-CN   开发上一个 Pixiv 插件时，意识到官方的 (全年龄/R-18) 过滤器并不能覆盖所有场景，容易使我的身体吃不消。因此需要更强大的强制过滤插件来一键过滤所有不良信息。
 // @description:ja      前回のPixivユーザースクリプトを作成している最中、公式の（セーフ/ R-18）フィルターがすべてのシーンをカバーしていないことに気づきました。 したがって、1つのクリックですべての不適切な情報をフィルタリングするより強力な強制フィルタリングスクリプトが必要です。
@@ -55,9 +55,9 @@ let delete_r18 = function () {
             for (let j = 0; j < divs.length; j++) {
                 // if contains 'R-18' or 'R-18G' in a div
                 if (divs[j].innerText.includes('R-18') || divs[j].innerText.includes('R-18G')) {
-                    let parent3 = div[i].parentNode.parentNode.parentNode;
+                    // let parent3 = div[i].parentNode.parentNode.parentNode;
                     let parent2 = div[i].parentNode.parentNode;
-                    if ((parent2.querySelectorAll('div[type="illust"]').length === 1 && parent2.tagName === 'LI') || parent3.tagName === 'UL') {
+                    if (parent2.querySelectorAll('div[type="illust"]').length === 1 && parent2.tagName === 'LI') {
                         parent2.remove();
                         // console.log('2');
                     } else {
