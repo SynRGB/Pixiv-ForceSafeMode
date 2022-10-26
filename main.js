@@ -3,7 +3,7 @@
 // @name:zh-CN          Pixiv-一键强制和谐
 // @name:ja             Pixiv-ワンタッチセキュリティモード
 // @namespace           https://github.com/TitanRGB
-// @version             1.2
+// @version             1.3
 // @description         While writing the last Pixiv user script, I realized that the official (Safe/R-18) filter didn't cover all the scenes. So I made this script to filter all bad information with one click.
 // @description:zh-CN   开发上一个 Pixiv 插件时，意识到官方的 (全年龄/R-18) 过滤器并不能覆盖所有场景，容易使我的身体吃不消。因此需要更强大的强制过滤插件来一键过滤所有不良信息。
 // @description:ja      前回のPixivユーザースクリプトを作成している最中、公式の（セーフ/ R-18）フィルターがすべてのシーンをカバーしていないことに気づきました。 したがって、1つのクリックですべての不適切な情報をフィルタリングするより強力な強制フィルタリングスクリプトが必要です。
@@ -186,18 +186,17 @@ let main = function () {
 let MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
 let observer = new MutationObserver(function (mutations) {
     mutations.forEach(function () {
-        if (new Date().getTime() - last_run_time > 20) {
-            setTimeout(function () {
-                // 主函数-添加交互按钮
-                if (document.querySelectorAll('div[class="Pixiv-QuickSafeMode"]').length === 0) {
-                    main();
-                    delete_r18();
-                }
-                // 删除R-18
-                else {
-                    delete_r18();
-                }
-            }, 100);
+        if (new Date().getTime() - last_run_time > 100) {
+            // 主函数-添加交互按钮
+            if (document.querySelectorAll('div[class="Pixiv-QuickSafeMode"]').length === 0) {
+                main();
+                delete_r18();
+            }
+            // 删除R-18
+            else {
+                delete_r18();
+            }
+            // console.log('Pixiv-QuickSafeMode: MutationObserver');
         }
     });
 });
