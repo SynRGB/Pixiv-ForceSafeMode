@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name                Pixiv-ForceSafeMode
-// @name:zh-CN          Pixiv-一键强制和谐
-// @name:ja             Pixiv-ワンタッチセキュリティモード
+// @name:zh-CN          Pixiv-强制和谐模式
+// @name:ja             Pixiv-強制安全モード
 // @namespace           https://github.com/TitanRGB
-// @version             1.4
+// @version             1.5
 // @description         While writing the last Pixiv user script, I realized that the official (Safe/R-18) filter didn't cover all the scenes. So I made this script to filter all bad information with one click.
 // @description:zh-CN   开发上一个 Pixiv 插件时，意识到官方的 (全年龄/R-18) 过滤器并不能覆盖所有场景，容易使我的身体吃不消。因此需要更强大的强制过滤插件来一键过滤所有不良信息。
 // @description:ja      前回のPixivユーザースクリプトを作成している最中、公式の（セーフ/ R-18）フィルターがすべてのシーンをカバーしていないことに気づきました。 したがって、1つのクリックですべての不適切な情報をフィルタリングするより強力な強制フィルタリングスクリプトが必要です。
@@ -205,4 +205,4 @@ observer.observe(document.body, {
     subtree: true
 });
 
-console.log("JS script Pixiv-ForceSafeMode (Pixiv-一键强制和谐) loaded. See more details at https://github.com/SynRGB/Pixiv-QuickSafeMode");
+console.log("JS script Pixiv-ForceSafeMode (Pixiv-强制和谐模式) loaded. See more details at https://github.com/SynRGB/Pixiv-QuickSafeMode");

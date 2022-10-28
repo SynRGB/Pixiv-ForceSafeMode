@@ -1,6 +1,6 @@
 <div align="center">
     <img src="https://github.com/SynRGB/Pixiv-ForceSafeMode/raw/main/%23README/icon/256.png" width="20%"/>
-    <h1>Pixiv-ForceSafeMode <code>v1.4</code></h1>
+    <h1>Pixiv-ForceSafeMode <code>v1.5</code></h1>
 	<p>
         <a href='https://github.com/SynRGB/Pixiv-ForceSafeMode'><img src="https://img.shields.io/badge/-GitHub-3A3A3A?style=flat&amp;logo=GitHub&amp;logoColor=white" referrerpolicy="no-referrer" alt="GitHub"></a>
 	    <a href='https://greasyfork.org/zh-CN/scripts/453648-pixiv-forcesafemode'><img src="https://img.shields.io/badge/-GreasyFork-670000?style=flat&amp;logo=tampermonkey&amp;logoColor=white" referrerpolicy="no-referrer" alt="GreasyFork"></a>
@@ -17,8 +17,6 @@ While writing the last Pixiv user script, I realized that the official (Safe/R-1
 
 The button is on the top bar, you should be able to see it.
 <!-- Greasy Fork 更新日志
-## Pixiv-ForceSafeMode `v1.4`
-- Fixed a functional bug
-- 修复了功能缺陷
-- 機能欠陥を修正した
+## Pixiv-ForceSafeMode `v1.5`
+- Rename 改名
 -->
