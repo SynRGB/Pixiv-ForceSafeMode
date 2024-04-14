@@ -1,3 +1,6 @@
+> [!WARNING]
+> 因为发现不实用，自 `2022 年 11 月 29 日` (`v1.6`) 起归档，不再维护。请注意，随着网站的更新，可能会存在兼容性问题。
+
 <div align="center">
     <img src="https://github.com/SynRGB/Pixiv-ForceSafeMode/raw/main/%23README/icon/256.png" width="20%"/>
     <h1>Pixiv-强制和谐模式 <code>v1.6</code></h1>
