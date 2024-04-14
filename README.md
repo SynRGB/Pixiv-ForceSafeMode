@@ -1,3 +1,6 @@
+> [!WARNING]
+> Archived and no longer maintained since `Nov 29, 2022` (`v1.6`) due to impracticality. Please note that compatibility issues may arise as websites update.
+
 <div align="center">
     <img src="https://github.com/SynRGB/Pixiv-ForceSafeMode/raw/main/%23README/icon/256.png" width="20%"/>
     <h1>Pixiv-ForceSafeMode <code>v1.6</code></h1>
@@ -16,7 +19,3 @@ While writing the last Pixiv user script, I realized that the official (Safe/R-1
 ### PS
 
 The button is on the top bar, you should be able to see it.
-<!-- Greasy Fork 更新日志
-## Pixiv-ForceSafeMode `v1.6`
-- Stable Release
--->
