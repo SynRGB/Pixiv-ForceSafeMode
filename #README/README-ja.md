@@ -1,3 +1,6 @@
+> [!WARNING]
+> 実用性がないと判断されたため、`2022 年 11 月 29 日` (`v1.6`) をもってアーカイブされ、メンテナンスは行われなくなりました。ウェブサイトが更新されるにつれて、互換性の問題が発生する可能性がありますので、ご注意ください。
+
 <div align="center">
     <img src="https://github.com/SynRGB/Pixiv-ForceSafeMode/raw/main/%23README/icon/256.png" width="20%"/>
     <h1>Pixiv-強制安全モード <code>v1.6</code></h1>
